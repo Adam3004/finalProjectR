@@ -25,8 +25,15 @@ PRS <- function(lbound, upbound, ourRange, ourFunction, size) {
 }
 
 runComparison<-function(lbound, upbound, functionToUse, dimenstion){
-  cat("PRS:",mean(replicate(50,PRS(lbound, upbound, 1:1000, functionToUse, dimenstion))), "\n")
-  cat("GA:", mean(replicate(50,(-1)*ga(type = "real-valued", fitness = function(x) -functionToUse(x), lower = c(th = lbound), upper = upbound, maxiter=100, monitor = FALSE)@fitnessValue)), "\n")
+  prsVal<-replicate(50,PRS(lbound, upbound, 1:1000, functionToUse, dimenstion))
+  hist(prsVal, title="Alipne01 2d", main=paste("Histogram of PRS in ", dimenstion, "d", sep = ""), xlab="Minimum values", breaks=10)
+  boxplot(prsVal, title="Alipne01 2d", main=paste("Boxplot of PRS in ", dimenstion, "d", sep = ""))
+  cat("PRS:",mean(prsVal), "\n")
+  
+  gaVal<-replicate(50,(-1)*ga(type = "real-valued", fitness = function(x) -functionToUse(x), lower = c(th = lbound), upper = upbound, maxiter=100, monitor = FALSE)@fitnessValue)
+  hist(gaVal, title="Alipne01 2d", main=paste("Histogram of GA in ", dimenstion, "d", sep = ""), xlab="Minimum values",breaks=10)
+  boxplot(gaVal, title="Alipne01 2d", main=paste("Boxplot of GA in ", dimenstion, "d", sep = ""))
+  cat("GA:", mean(gaVal), "\n")
 }
 
 firstHalf <- function(lbound2, upbound2, lbound10, upbound10, lbound20, upbound20) {
