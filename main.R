@@ -34,6 +34,8 @@ runComparison<-function(lbound, upbound, functionToUse, dimenstion){
   hist(gaVal, title="Alipne01 2d", main=paste("Histogram of GA in ", dimenstion, "d", sep = ""), xlab="Minimum values",breaks=10)
   boxplot(gaVal, title="Alipne01 2d", main=paste("Boxplot of GA in ", dimenstion, "d", sep = ""))
   cat("GA:", mean(gaVal), "\n")
+  
+  t.test(prsVal,gaVal)
 }
 
 firstHalf <- function(lbound2, upbound2, lbound10, upbound10, lbound20, upbound20) {
