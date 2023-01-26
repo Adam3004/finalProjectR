@@ -1,16 +1,15 @@
 library(smoof)
 library(GA)
+
 Alpine1d <- makeAlpine01Function(c(1))
 Alpine2d <- makeAlpine01Function(c(2))
 Alpine10d <- makeAlpine01Function(c(10))
 Alpine20d <- makeAlpine01Function(c(20))
-Alpine2d(c(1,2))
 
 rosenGrok1d<-makeRosenbrockFunction(1)
 rosenGrok2d<-makeRosenbrockFunction(c(2))
 rosenGrok10d<-makeRosenbrockFunction(c(10))
 rosenGrok20d<-makeRosenbrockFunction(c(20))
-rosenGrok2d(c(5,2))
 
 PRS <- function(lbound, upbound, ourRange, ourFunction, size) {
   minVal=100000000000000000000000000000000000000000;
