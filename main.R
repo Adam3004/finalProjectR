@@ -30,7 +30,7 @@ runComparison<-function(lbound, upbound, functionToUse, dimenstion){
   boxplot(prsVal, title="Alipne01 2d", main=paste("Boxplot of PRS in ", dimenstion, "d", sep = ""))
   cat("PRS:",mean(prsVal), "\n")
   
-  gaVal<-replicate(50,(-1)*ga(type = "real-valued", fitness = function(x) -functionToUse(x), lower = c(th = lbound), upper = upbound, maxiter=100, monitor = FALSE)@fitnessValue)
+  gaVal<-replicate(50,(-1)*ga(type = "real-valued", fitness = function(x) -functionToUse(x), lower = c(th = lbound), upper = upbound, maxiter=1000, monitor = FALSE)@fitnessValue)
   hist(gaVal, title="Alipne01 2d", main=paste("Histogram of GA in ", dimenstion, "d", sep = ""), xlab="Minimum values",breaks=10)
   boxplot(gaVal, title="Alipne01 2d", main=paste("Boxplot of GA in ", dimenstion, "d", sep = ""))
   cat("GA:", mean(gaVal), "\n")
@@ -66,16 +66,15 @@ firstHalf <- function(lbound2, upbound2, lbound10, upbound10, lbound20, upbound2
 
 #Values have to be between -5 and 10
 lbound2 = c(0,0)
-upbound2 = c(1,2)
-lbound10 = c(0,0,1,2,3,4,5,6,7,8)
-upbound10 = c(1,2,3,4,5,6,7,8,9,9)
-lbound20 = c(0,0,1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8,8,0)
-upbound20 =c(1,2,3,4,5,6,7,8,9,10,2,3,4,5,6,7,8,9,9,9)
+upbound2 = c(1,1)
+lbound10 = c(0,0,0,0,0,0,0,0,0,0)
+upbound10 = c(1,1,1,1,1,1,1,1,1,1)
+lbound20 = c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
+upbound20 =c(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
 
 firstHalf(lbound2, upbound2, lbound10, upbound10, lbound20, upbound20)
 
 getParamSet(Alpine20d)
 getParamSet(rosenGrok20d)
-
 
 
